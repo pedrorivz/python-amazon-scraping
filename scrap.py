@@ -52,4 +52,5 @@ print(lista)
 
 with open('iphone.csv', 'w', newline='') as mf:
     wr = csv.writer(mf, quoting=csv.QUOTE_ALL)
-    wr.writerow(lista)
+    for item in lista:
+        wr.writerow(item.values())
