@@ -4,9 +4,14 @@ from selenium.webdriver.support.ui import WebDriverWait
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
 import csv
+import random
 
+proxies = ['1.20.99.178:34781', '12.218.209.130:53281', '110.5.100.130:60996', '117.103.5.186:44825', '190.5.225.178:53570']
 
-proxy = "12.218.209.130:53281"
+proxy = random.choice(proxies)
+
+print(proxy)
+
 desired_capabilities = webdriver.DesiredCapabilities.CHROME.copy()
 desired_capabilities['proxy'] = {
     "httpProxy": proxy,
