@@ -1,8 +1,22 @@
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.support.ui import WebDriverWait
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
 import csv
+
+
+proxy = "12.218.209.130:53281"
+desired_capabilities = webdriver.DesiredCapabilities.CHROME.copy()
+desired_capabilities['proxy'] = {
+    "httpProxy": proxy,
+    "ftpProxy": proxy,
+    "sslProxy": proxy,
+    "noProxy": None,
+    "proxyType": "MANUAL",
+    "class": "org.openqa.selenium.Proxy",
+    "autodetect": False
+}
 
 driver = webdriver.Chrome()
 driver.get("https://amazon.com.br")
