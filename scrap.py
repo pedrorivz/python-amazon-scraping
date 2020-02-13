@@ -2,6 +2,7 @@ from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
+import csv
 
 driver = webdriver.Chrome()
 driver.get("https://amazon.com.br")
@@ -29,3 +30,7 @@ for span in divs:
                 })
 
 print(lista)
+
+with open('iphone.csv', 'w', newline='') as mf:
+    wr = csv.writer(mf, quoting=csv.QUOTE_ALL)
+    wr.writerow(lista)
