@@ -5,9 +5,10 @@ from bs4 import BeautifulSoup
 from urllib.request import urlopen
 import csv
 import random
+from os.path import join as pjoin
 
 site = 'https://amazon.com.br'
-textToSearch = 'iphone'
+textToSearch = 'xbox'
 
 def randomProxy(fileName):
     lines = open(fileName).read().splitlines()
@@ -56,7 +57,9 @@ def parseHtml():
 
 def saveToCsv():
     productList = parseHtml()
-    with open(textToSearch+'.csv', 'w', newline='') as myFile:
+    filename = textToSearch+'.csv'
+    pathToFile = pjoin("results/", filename)
+    with open(pathToFile, 'w', newline='') as myFile:
         writeLines = csv.writer(myFile, quoting=csv.QUOTE_ALL)
         for item in productList:
             writeLines.writerow(item.values())
