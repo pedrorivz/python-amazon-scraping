@@ -6,9 +6,11 @@ from urllib.request import urlopen
 import csv
 import random
 
-proxies = ['1.20.99.178:34781', '12.218.209.130:53281', '110.5.100.130:60996', '117.103.5.186:44825', '190.5.225.178:53570']
+def random_proxy(fname):
+    lines = open(fname).read().splitlines()
+    return random.choice(lines)
 
-proxy = random.choice(proxies)
+proxy = random_proxy('proxy.txt') 
 
 print(proxy)
 
