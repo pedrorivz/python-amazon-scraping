@@ -14,7 +14,7 @@ cd python-amazon-scraping
 ## 2 - Change your search
 
 Open amazon_scrap.py file<br>
-Edit the value of **_textToSearch_**<br>
+Edit the value of the variable: **_textToSearch_**<br>
 Save the file
 
 ## 3 - Run Code
