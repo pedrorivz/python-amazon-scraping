@@ -9,18 +9,15 @@ A script to browse **_AMAZON_** site and get the results from 1 page.
 ```
 git clone git@github.com:phsantosit/python-amazon-scraping.git
 cd python-amazon-scraping
+mkdir results
 ```
-
-## 2 - Change your search
-
-Open amazon_scrap.py file<br>
-Edit the value of the variable: **_textToSearch_**<br>
-Save the file
-
-## 3 - Run Code
+## 2 - Run Code
 
 run on your terminal the code below
 
+Where is "SEARCH" change to what is your search.
+eg: iphone, playstation, xbox, headphone
+
 ```
-python3 amazon_scrap.py
+python3 amazon_scrap.py SEARCH
 ```

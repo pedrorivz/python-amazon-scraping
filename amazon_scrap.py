@@ -6,9 +6,13 @@ from urllib.request import urlopen
 import csv
 import random
 from os.path import join as pjoin
+import argparse
 
 site = 'https://amazon.com.br'
-textToSearch = 'xbox'
+
+argparser = argparse.ArgumentParser()
+argparser.add_argument('textToSearch', help='Enter what you want to search on amazon')
+args = argparser.parse_args()
 
 def randomProxy(fileName):
     lines = open(fileName).read().splitlines()
@@ -31,9 +35,9 @@ def navBrowser():
     proxyToUse()
     driver = webdriver.Chrome()
     driver.get(site)
-
+    
     inputElement = driver.find_element_by_id("twotabsearchtextbox")
-    inputElement.send_keys(textToSearch)
+    inputElement.send_keys(args.textToSearch)
     inputElement.submit()
     return urlopen(driver.current_url)
 
@@ -57,7 +61,7 @@ def parseHtml():
 
 def saveToCsv():
     productList = parseHtml()
-    filename = textToSearch+'.csv'
+    filename = args.textToSearch+'.csv'
     pathToFile = pjoin("results/", filename)
     with open(pathToFile, 'w', newline='') as myFile:
         writeLines = csv.writer(myFile, quoting=csv.QUOTE_ALL)
