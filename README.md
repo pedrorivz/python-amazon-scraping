@@ -21,3 +21,4 @@ eg: iphone, playstation, xbox, headphone
 ```
 python3 amazon_scrap.py SEARCH
 ```
+![](giphy.gif)
