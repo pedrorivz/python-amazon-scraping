@@ -9,12 +9,12 @@ import random
 site = 'https://amazon.com.br'
 textToSearch = 'iphone'
 
-def random_proxy(fname):
-    lines = open(fname).read().splitlines()
+def randomProxy(fileName):
+    lines = open(fileName).read().splitlines()
     return random.choice(lines)
 
 def proxyToUse():
-    proxy = random_proxy('proxy.txt') 
+    proxy = randomProxy('proxy.txt') 
     desired_capabilities = webdriver.DesiredCapabilities.CHROME.copy()
     desired_capabilities['proxy'] = {
         "httpProxy": proxy,
@@ -39,27 +39,27 @@ def navBrowser():
 def parseHtml():
     html = navBrowser()
     span = BeautifulSoup(html.read(), "html5lib")
-    lista = []
+    productList = []
     divs = span.findAll("div", {"class":"a-section a-spacing-medium"})
 
     for span in divs:
-        nametag = span.find("span", {"class":["a-size-base-plus", "a-size-medium"]})
-        pricetag = span.find("span", {"class":"a-offscreen"})
+        nameTag = span.find("span", {"class":["a-size-base-plus", "a-size-medium"]})
+        priceTag = span.find("span", {"class":"a-offscreen"})
 
-        if nametag and pricetag:
-                lista.append({
-                    'Product':nametag.getText(),
-                    'Price':pricetag.getText()
+        if nameTag and priceTag:
+                productList.append({
+                    'Product':nameTag.getText(),
+                    'Price':priceTag.getText()
                     })
 
-    return lista
+    return productList
 
 def saveToCsv():
-    lista = parseHtml()
-    with open(textToSearch+'.csv', 'w', newline='') as mf:
-        wr = csv.writer(mf, quoting=csv.QUOTE_ALL)
-        for item in lista:
-            wr.writerow(item.values())
+    productList = parseHtml()
+    with open(textToSearch+'.csv', 'w', newline='') as myFile:
+        writeLines = csv.writer(myFile, quoting=csv.QUOTE_ALL)
+        for item in productList:
+            writeLines.writerow(item.values())
 
 
 
