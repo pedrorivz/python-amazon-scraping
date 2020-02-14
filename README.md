@@ -4,7 +4,7 @@ A script to browse **_AMAZON_** site and get the results from 1 page.
 
 # How To Use
 
-## 1 - Clone this repository
+## 1 - Clone this repository and setting up the folder
 
 ```
 git clone git@github.com:phsantosit/python-amazon-scraping.git
