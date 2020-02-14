@@ -7,7 +7,7 @@ import csv
 import random
 
 site = 'https://amazon.com.br'
-textToSearch = 'patinete'
+textToSearch = 'iphone'
 
 def random_proxy(fname):
     lines = open(fname).read().splitlines()
