@@ -1,6 +1,6 @@
 # Python Amazon Scraping 
  
-A script to browse a website and get the results for 1 page.
+A script to browse **_AMAZON_** site and get the results from 1 page.
 
 # How To Use
 
