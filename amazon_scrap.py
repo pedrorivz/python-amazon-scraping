@@ -6,6 +6,9 @@ from urllib.request import urlopen
 import csv
 import random
 
+site = 'https://amazon.com.br'
+textToSearch = 'patinete'
+
 def random_proxy(fname):
     lines = open(fname).read().splitlines()
     return random.choice(lines)
@@ -26,10 +29,10 @@ def proxyToUse():
 def navBrowser():
     proxyToUse()
     driver = webdriver.Chrome()
-    driver.get("https://amazon.com.br")
+    driver.get(site)
 
     inputElement = driver.find_element_by_id("twotabsearchtextbox")
-    inputElement.send_keys("iphone")
+    inputElement.send_keys(textToSearch)
     inputElement.submit()
     return urlopen(driver.current_url)
 
@@ -40,7 +43,7 @@ def parseHtml():
     divs = span.findAll("div", {"class":"a-section a-spacing-medium"})
 
     for span in divs:
-        nametag = span.find("span", {"class":"a-size-base-plus"})
+        nametag = span.find("span", {"class":["a-size-base-plus", "a-size-medium"]})
         pricetag = span.find("span", {"class":"a-offscreen"})
 
         if nametag and pricetag:
@@ -48,11 +51,12 @@ def parseHtml():
                     'Product':nametag.getText(),
                     'Price':pricetag.getText()
                     })
+
     return lista
 
 def saveToCsv():
     lista = parseHtml()
-    with open('iphone.csv', 'w', newline='') as mf:
+    with open(textToSearch+'.csv', 'w', newline='') as mf:
         wr = csv.writer(mf, quoting=csv.QUOTE_ALL)
         for item in lista:
             wr.writerow(item.values())
