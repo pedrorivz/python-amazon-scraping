@@ -33,7 +33,7 @@ def proxyToUse():
 
 def navBrowser():
     proxyToUse()
-    driver = webdriver.Chrome()
+    driver = webdriver.Chrome(ChromeDriverManager().install())
     driver.get(site)
     
     inputElement = driver.find_element_by_id("twotabsearchtextbox")
