@@ -9,7 +9,6 @@ A script to browse **_AMAZON_** site and get the results from 1 page.
 ```
 git clone git@github.com:phsantosit/python-amazon-scraping.git
 cd python-amazon-scraping
-mkdir results
 ```
 ## 2 - Run Code
 
