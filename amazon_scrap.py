@@ -19,7 +19,7 @@ def randomProxy(fileName):
     return random.choice(lines)
 
 def proxyToUse():
-    proxy = randomProxy('proxy.txt') 
+    proxy = randomProxy('config/proxy.txt') 
     desired_capabilities = webdriver.DesiredCapabilities.CHROME.copy()
     desired_capabilities['proxy'] = {
         "httpProxy": proxy,
