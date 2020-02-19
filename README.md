@@ -25,7 +25,7 @@ It will create a virtual environment to install required libs and activate it.
 if you run venv or not, run the code on your terminal:
 
 ```
-pip3 install -r requirements.txt
+pip3 install -r config/requirements.txt
 ```
 
 It will install all required libs to run the script.
